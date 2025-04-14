@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donations 🩸</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #c0392b;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #c0392b;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Blood section */
+        .blood-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .blood-section h1 {
+            color: #c0392b;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .blood-section p {
+            line-height: 1.6;
+            color: black;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Form Styling */
+        .donation-form {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-form label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .donation-form input[type="time"],
+        .donation-form input[type="date"],
+        .donation-form input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f1f1f1;
+        }
+
+        .donation-form input[type="time"]:focus,
+        .donation-form input[type="date"]:focus,
+        .donation-form input[type="number"]:focus {
+            border-color: #c0392b;
+            background-color: #fff;
+        }
+
+        .donation-form input[type="submit"] {
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .donation-form input[type="submit"]:hover {
+            background-color: #e74c3c;
+            
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blood-section {
+                padding: 15px;
+                margin: 20px;
+            }
+
+            .blood-section h1 {
+                font-size: 28px;
+            }
+
+            .donation-form input[type="submit"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="donor.html">Donor</a></li>
+                <li><a href="Blood.html" class="active">Blood</a></li>
+                <li><a href="about.html">About Us</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Blood Donation Registration Section -->
+        <section class="blood-section">
+            <h1>Blood Donation Registration</h1>
+            <p>If you want to register a new blood donation, please fill out the form below:</p>
+
+            <!-- Blood Donation Form -->
+            <form action="submit_blood_donation.php" method="POST" class="donation-form">
+                <label for="donation_time">Donation Time</label>
+                <input type="time" id="donation_time" name="donation_time" required><br>
+
+                <label for="donation_date">Donation Date</label>
+                <input type="date" id="donation_date" name="donation_date" required><br>
+
+                <label for="blood_quantity">Blood Quantity (ml)</label><br>
+                <input type="number" id="blood_quantity" name="blood_quantity" required placeholder="Enter blood quantity in ml">
+
+                <input type="submit" value="Submit Donation">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; [Year] [Your Blood Bank Name]. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

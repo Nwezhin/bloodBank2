@@ -1,0 +1,49 @@
+<?php
+include 'connect.php';
+
+// Set threshold for low quantity (e.g. less than 300 ml)
+$quantityThreshold = 300;
+
+// Set expiry threshold (e.g. donations older than 1 month)
+$expiryDate = date('Y-m-d', strtotime('-1 month'));
+
+// 1. Check for low stock
+$lowStockSql = "SELECT * FROM BloodStock WHERE D_quantity_ml < ?";
+$lowStmt = $conn->prepare($lowStockSql);
+$lowStmt->bind_param("i", $quantityThreshold);
+$lowStmt->execute();
+$lowResult = $lowStmt->get_result();
+
+// 2. Check for near-expiry blood
+$expirySql = "SELECT * FROM BloodStock WHERE D_DATE <= ?";
+$expiryStmt = $conn->prepare($expirySql);
+$expiryStmt->bind_param("s", $expiryDate);
+$expiryStmt->execute();
+$expiryResult = $expiryStmt->get_result();
+
+echo "<h2>Notifications</h2>";
+
+if ($lowResult->num_rows > 0) {
+    echo "<h3>Low Blood Stock:</h3><ul>";
+    while ($row = $lowResult->fetch_assoc()) {
+        echo "<li>Donor ID: {$row['D_ID']} - {$row['BloodGroup']} - {$row['D_quantity_ml']} ml</li>";
+    }
+    echo "</ul>";
+} else {
+    echo "<p>No low blood stock.</p>";
+}
+
+if ($expiryResult->num_rows > 0) {
+    echo "<h3>Blood Nearing Expiry:</h3><ul>";
+    while ($row = $expiryResult->fetch_assoc()) {
+        echo "<li>Donor ID: {$row['D_ID']} - Donated on: {$row['D_DATE']} - {$row['BloodGroup']}</li>";
+    }
+    echo "</ul>";
+} else {
+    echo "<p>No blood nearing expiry.</p>";
+}
+
+$lowStmt->close();
+$expiryStmt->close();
+$conn->close();
+?>

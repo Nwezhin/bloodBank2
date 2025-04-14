@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank 🩸</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section id="s1">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Donor.html" class="active">Donor</a></li>
+        <li><a href="Blood.html">Blood</a></li>
+        <li><a href="About.html">About As</a></li>
+    </ul>
+
+    <div class="content">
+        <div class="text-section">
+            <h1>DONATE BLOOD TODAY!!!</h1>
+            <h3>YOU CAN HELP SAVE A LIFE!</h3>
+            <p>life saving hub where donated blood is safely
+                stored and ready to give hope,health,and a second chance to those in need.</p>
+            
+        </div>
+        <img src="./images/close-up-patient-with-tubes-her-arm-squeezing-ball-her-hand-while-donating-blood_1200x800.jpg" alt="Blood Donation">
+    </div>
+</section>
+</body>
+</html>
+
+
+
+
+
+
+

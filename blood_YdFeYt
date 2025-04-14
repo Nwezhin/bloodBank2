@@ -1,0 +1,28 @@
+<?php
+include 'connect.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['Name'];
+    $age = $_POST['Age'];
+    $gender = $_POST['Gender'];
+    $phone = $_POST['PhoneNO'];
+    $address = $_POST['Address'];
+    $record = $_POST['HealthRecord'];
+    $group = $_POST['BloodGroup'];
+
+    $sql = "INSERT INTO Donor (Name, Age, Gender, PhoneNO, Address, HealthRecord, BloodGroup)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sisssss", $name, $age, $gender, $phone, $address, $record, $group);
+
+    if ($stmt->execute()) {
+        echo "Donor added successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+$conn->close();
+?>
